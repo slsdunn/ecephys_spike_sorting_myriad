@@ -65,11 +65,11 @@ def createInputJson(output_file,
                     ):
 
     # hard coded paths to code on your computer and system
-    ecephys_directory = r'D:\ecephys_fork\ecephys_spike_sorting\ecephys_spike_sorting'
+    ecephys_directory = r'/home/ucbtlsd/ecephys_spike_sorting_myriad/ecephys_spike_sorting/ecephys_spike_sorting'
     
     # location of kilosor respository and kilosort version
 
-    kilosort_repository = r'C:\Users\labadmin\Documents\jic\KS3_release\Kilosort'
+    kilosort_repository = r'/home/ucbtlsd/Kilosort3_myriad'
 
     KS2ver = '3.0'      # must equal '3.0', '2.5' or '2.0', and match the kiilosort_repository
     
@@ -77,14 +77,14 @@ def createInputJson(output_file,
     if KS2ver == '3.0':
         include_pcs = False  # set to false for KS2ver = '3.0'
     
-    npy_matlab_repository = r'C:\Users\labadmin\Documents\jic\npy-matlab-master'
-    catGTPath = r'C:\Users\labadmin\Documents\jic\CatGT-win'
-    tPrime_path=r'C:\Users\labadmin\Documents\jic\TPrime-win'
-    cWaves_path=r'C:\Users\labadmin\Documents\jic\C_Waves-win'
+    npy_matlab_repository = r'/home/ucbtlsd/npy-matlab_myriad'
+    catGTPath = r'/home/ucbtlsd/spikeGLX-tools/CatGT-linux'
+    tPrime_path=r'/home/ucbtlsd/spikeGLX-tools/TPrime-linux'
+    cWaves_path=r'/home/ucbtlsd/spikeGLX-tools/C_Waves-linux'
     
      
     # for config files and kilosort working space
-    kilosort_output_tmp = r'D:\kilosort_datatemp' 
+    kilosort_output_tmp = r'/home/ucbtlsd/Scratch/kilosort_datatemp' 
     
     
     # derived directory names
