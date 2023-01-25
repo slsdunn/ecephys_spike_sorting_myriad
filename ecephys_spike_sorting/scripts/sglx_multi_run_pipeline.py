@@ -156,7 +156,7 @@ modules = [
             'quality_metrics'
 			]
 
-json_directory = r'D:\ecephys_fork\json_files'
+json_directory = r'/home/ucbtlsd/ecephys_spike_sorting_myriad/json_files'
 
 # -----------------------
 # -----------------------
