@@ -58,7 +58,7 @@ npx_directory = r'/home/ucbtlsd/Scratch/Data'
 #           these strings must match a key in the param dictionaries above.
 
 run_specs = [									
-						['2023-01-12_F2104_Cinnamon_LHS_shank1234_CL1_RHS_shank2_bank0_extRefs_g0', '0', 'start,end', '0', ['default','default'] ]
+						['2023-01-12_F2104_Cinnamon_LHS_shank1234_CL1_RHS_shank2_bank0_extRefs', '0', 'start,end', '0', ['default','default'] ]
 ]
 
 # ------------------
