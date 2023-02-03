@@ -65,7 +65,7 @@ def createInputJson(output_file,
                     ):
 
     # hard coded paths to code on your computer and system
-    ecephys_directory = r'/home/ucbtlsd/ecephys_spike_sorting_myriad/ecephys_spike_sorting/ecephys_spike_sorting'
+    ecephys_directory = r'/home/ucbtlsd/ecephys_spike_sorting_myriad/ecephys_spike_sorting'
     
     # location of kilosor respository and kilosort version
 
