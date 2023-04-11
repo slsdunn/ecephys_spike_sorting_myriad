@@ -69,7 +69,7 @@ def createInputJson(output_file,
     
     # location of kilosor respository and kilosort version
 
-    kilosort_repository = r'/home/ucbtlsd/Kilosort3_myriad'
+    kilosort_repository = r'C:\Users\labadmin\Documents\jic\KS3_release\Kilosort'
 
     KS2ver = '3.0'      # must equal '3.0', '2.5' or '2.0', and match the kiilosort_repository
     
