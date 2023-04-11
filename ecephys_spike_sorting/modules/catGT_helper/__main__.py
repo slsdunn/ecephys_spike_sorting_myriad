@@ -63,6 +63,8 @@ def run_CatGT(args):
     
     print('CatGT command line:' + catGT_cmd)
     
+    catGT_cmd = catGT_cmd.split(' ') # added by Jules+Soraya on 3/2/23 to work with Linux
+
     start = time.time()
     subprocess.Popen(catGT_cmd,shell='False').wait()
 

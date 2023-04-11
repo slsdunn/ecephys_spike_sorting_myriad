@@ -82,7 +82,9 @@ def calculate_mean_waveforms(args):
                                 ' -pre_samples=' + repr(args['mean_waveform_params']['pre_samples']) + \
                                 ' -num_spikes=' + repr(args['mean_waveform_params']['spikes_per_epoch']) + \
                                 ' -snr_radius=' + repr(args['mean_waveform_params']['snr_radius'])
-                                
+
+        cwaves_cmd = cwaves_cmd.split(' ') # added by Jules+Soraya on 7/2/23 to work with Linux (makes a list of strings)
+
         print(cwaves_cmd)
         
         # make the C_Waves call
