@@ -21,7 +21,7 @@ def run_CatGT(args):
         # call catGT directly with params. CatGT.log file will be saved lcoally
         # in current working directory (with the calling script)
         catGTexe_fullpath = catGTPath.replace('\\', '/') + "/CatGT"
-    elif sys.platform.startswith('linux'):
+    elif sys.platform.starstwith('linux'):
         catGTexe_fullpath = catGTPath.replace('\\', '/') + "/runit.sh"
     else:
         print('unknown system, cannot run CatGt')
@@ -61,8 +61,6 @@ def run_CatGT(args):
     
     print('CatGT command line:' + catGT_cmd)
     
-    catGT_cmd = catGT_cmd.split(' ') # added by Jules+Soraya on 3/2/23 to work with Linux
-
     start = time.time()
     subprocess.call(catGT_cmd)
 
