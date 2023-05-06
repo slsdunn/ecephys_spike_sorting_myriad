@@ -24,7 +24,7 @@ def createInputJson(output_file,
                     input_meta_path=None,
                     extracted_data_directory=None,
                     kilosort_output_directory=None,
-                    ks_make_copy=True,
+                    ks_make_copy=False,
                     probe_type='3A',
                     catGT_run_name='test',
                     gate_string='0',
@@ -50,7 +50,7 @@ def createInputJson(output_file,
                     ks_finalSplits = 1,
                     ks_labelGood = 1,
                     ks_saveRez = 1,
-                    ks_copy_fproc = 1,
+                    ks_copy_fproc = 0,
                     ks_minfr_goodchannels = 0.1,                  
                     ks_whiteningRadius_um = 163,
                     ks_Th = '[10,4]',
@@ -67,26 +67,26 @@ def createInputJson(output_file,
                     ):
 
     # hard coded paths to code on your computer and system
-    ecephys_directory = r'/home/ucbtlsd/ecephys_spike_sorting_myriad/ecephys_spike_sorting'
+    ecephys_directory = r'D:\ecephys_fork\ecephys_spike_sorting\ecephys_spike_sorting'
     
     # location of kilosor respository and kilosort version
 
-    kilosort_repository = r'/home/ucbtlsd/Kilosort3_myriad'
+    kilosort_repository = r'C:\Users\labadmin\Documents\jic\KS25_release'
 
-    KS2ver = '3.0'      # must equal '3.0', '2.5' or '2.0', and match the kiilosort_repository
+    KS2ver = '2.5'      # must equal '3.0', '2.5' or '2.0', and match the kiilosort_repository
     
     # KS 3.0 does not yet output pcs.
     if KS2ver == '3.0':
         include_pcs = False  # set to false for KS2ver = '3.0'
     
-    npy_matlab_repository = r'/home/ucbtlsd/npy-matlab_myriad'
-    catGTPath = r'/home/ucbtlsd/spikeGLX-tools/CatGT-linux'
-    tPrime_path=r'/home/ucbtlsd/spikeGLX-tools/TPrime-linux'
-    cWaves_path=r'/home/ucbtlsd/spikeGLX-tools/C_Waves-linux'
+    npy_matlab_repository = r'C:\Users\labadmin\Documents\jic\npy-matlab-master'
+    catGTPath = r'C:\Users\labadmin\Documents\jic\CatGT-win'
+    tPrime_path=r'C:\Users\labadmin\Documents\jic\TPrime-win'
+    cWaves_path=r'C:\Users\labadmin\Documents\jic\C_Waves-win'
     
      
     # for config files and kilosort working space
-    kilosort_output_tmp = r'/home/ucbtlsd/Scratch/kilosort_datatemp' 
+    kilosort_output_tmp = r'D:\kilosort_datatemp' 
     
     
     # derived directory names
