@@ -110,6 +110,9 @@ ks_copy_fproc = 1
 ks_templateRadius_um = 163
 ks_whiteningRadius_um = 163
 ks_minfr_goodchannels = 0.1
+ks_CAR = 0          # CAR already done in catGT
+ks_nblocks = 1      # for KS2.5 and KS3; 1 for rigid registration in drift correction, 
+                    # higher numbers to allow different drift for different 'blocks' of the probe
 
 # If running KS20_for_preprocessed_data:
 # (https://github.com/jenniferColonell/KS20_for_preprocessed_data)
@@ -229,6 +232,8 @@ for i, spec in enumerate(recording_specs):
                                    ks_CSBseed = 1,
                                    ks_LTseed = 1,
                                    ks_templateRadius_um = ks_templateRadius_um,
+                                   ks_CAR = ks_CAR,
+                                   ks_nblocks = ks_nblocks,
                                    extracted_data_directory = npx_directory,
                                    c_Waves_snr_um = c_Waves_snr_um,                               
                                    qm_isi_thresh = refPerMS/1000
