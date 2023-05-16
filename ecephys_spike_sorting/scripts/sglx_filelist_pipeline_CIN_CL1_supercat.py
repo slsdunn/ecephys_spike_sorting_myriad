@@ -1,8 +1,56 @@
 import os
-
+import numpy as np
 from helpers import SpikeGLX_utils
 from helpers import run_one_probe
 from create_input_json import createInputJson
+
+def spike_times_npy_to_sec(sp_fullPath, sample_rate, bNPY):
+    # convert spike_times.npy to text of times in sec
+    # return path to the new file. Can take sample_rate as a
+    # parameter, or set to 0 to read from param file
+
+    # get file name and create path to new file
+    sp_path, sp_fileName = os.path.split(sp_fullPath)
+    baseName, bExt = os.path.splitext(sp_fileName)
+    if bNPY:
+        new_fileName = baseName + '_sec.npy'
+    else:
+        new_fileName = baseName + '_sec.txt'
+        
+    new_fullPath = os.path.join(sp_path, new_fileName)
+
+    # load spike_times.npy; returns numpy array (Nspike,) as uint64
+    spike_times = np.load(sp_fullPath)
+
+    if sample_rate == 0:
+        # get sample rate from params.py file, assuming sp_path is a full set
+        # of phy output
+        with open(os.path.join(sp_path, 'params.py'), 'r') as f:
+            currLine = f.readline()
+            while currLine != '':  # The EOF char is an empty string
+                if 'sample_rate' in currLine:
+                    sample_rate = float(currLine.split('=')[1])
+                    print(f'sample_rate read from params.py: {sample_rate:.10f}')
+                currLine = f.readline()
+
+            if sample_rate == 0:
+                print('failed to read in sample rate\n')
+                sample_rate = 30000
+
+    spike_times_sec = spike_times/sample_rate   # spike_times_sec dtype = float
+
+    if bNPY:
+        # write out npy file
+        np.save(new_fullPath, spike_times_sec)
+    else:
+        # write out single column text file
+        nSpike = len(spike_times_sec)
+        with open(new_fullPath, 'w') as outfile:
+            for i in range(0, nSpike-1):
+                outfile.write(f'{spike_times_sec[i]:.6f}\n')
+            outfile.write(f'{spike_times_sec[nSpike-1]:.6f}')
+
+    return new_fullPath
 
 
 # script to run sorting and postprocessing moduels on a list of recordings
@@ -113,6 +161,7 @@ module_input_json = []
 module_output_json = []
 session_id = []
 data_directory = []
+spike_npy_paths = []
  
 for i, spec in enumerate(recording_specs):
     
@@ -137,7 +186,8 @@ for i, spec in enumerate(recording_specs):
     outputName = 'imec' + prbStr + '_ks2'
     
     kilosort_output_dir = os.path.join(kilosort_output_parent, outputName)
-    
+    spike_npy_paths.append(os.path.join(kilosort_output_dir, 'spike_times.npy'))
+
     session_id.append(baseName) 
     
     module_input_json.append(os.path.join(json_directory, session_id[i] + '-input.json'))
@@ -204,5 +254,10 @@ for i, spec in enumerate(recording_specs):
              modules,
              module_input_json[i],
              logFullPath )
-                 
+
+    # run conversion to seconds for spike_times.npy for this recording
+    # sample rate is read from the params.py file
+    bNPY = 1 # set to 1 to output npy files of time in seconds (recommended)k zero for text
+    spike_times_npy_to_sec(spike_npy_paths[i], 0, bNPY)
+                  
         
